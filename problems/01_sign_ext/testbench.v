@@ -16,9 +16,10 @@ wire [31:0]ext_imm;
 sign_ext se(.imm(imm), .ext_imm(ext_imm));
 
 /*
-*   Problem 1:
+*   Problem 1 (solved):
 *   Define wire 'ext_imm2' with appropriate width.
 */
+wire [31:0]ext_imm2;
 sign_ext2 se2(.imm(imm), .ext_imm(ext_imm2));
 
 wire [31:0]minus_ext_imm;
@@ -29,6 +30,8 @@ wire [31:0]zero;
 *   Problem 2:
 *   Assign sum of 'ext_imm' and 'minus_ext_imm' to zero.
 */
+
+assign zero = minus_ext_imm + ext_imm;
 
 initial begin
     $dumpvars;      /* Open for dump of signals */

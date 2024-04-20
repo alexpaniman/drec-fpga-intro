@@ -8,5 +8,6 @@ module sign_ext(
 *   Problem 4:
 *   Describe sign extension logic.
 */
+   assign ext_imm = {{20{imm[0]}}, imm};
 
 endmodule

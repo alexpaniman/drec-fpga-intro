@@ -9,6 +9,9 @@ module sign_ext2(
 *   Describe sign extension logic using ternary operator.
 */
 
-assign ext_imm = {ext, imm};
+   wire ext;
+   assign ext = imm[0] ? 0 : 1;
+
+   assign ext_imm = {{20{ext}}, imm};
 
 endmodule

@@ -5,8 +5,9 @@ module neg(
 );
 
 /*
-*   Problem 3:
+*   Problem 3 (solved):
 *   Describe sign-inversion logic here.
 */
+assign minus_x = ~x + 1;
 
 endmodule
