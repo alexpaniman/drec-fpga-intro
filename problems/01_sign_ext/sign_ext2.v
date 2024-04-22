@@ -5,12 +5,11 @@ module sign_ext2(
 );
 
 /*
-*   Problem 5:
+*   Problem 5 (solved):
 *   Describe sign extension logic using ternary operator.
 */
 
-   wire ext;
-   assign ext = imm[0] ? 0 : 1;
+   wire ext = imm[11] ? 1'b1 : 1'b0;
 
    assign ext_imm = {{20{ext}}, imm};
 

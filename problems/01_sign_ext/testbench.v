@@ -27,10 +27,9 @@ neg neg(.x(ext_imm), .minus_x(minus_ext_imm));
 
 wire [31:0]zero;
 /*
-*   Problem 2:
+*   Problem 2 (solved):
 *   Assign sum of 'ext_imm' and 'minus_ext_imm' to zero.
 */
-
 assign zero = minus_ext_imm + ext_imm;
 
 initial begin
