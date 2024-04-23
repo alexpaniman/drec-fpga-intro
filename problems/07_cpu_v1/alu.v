@@ -5,12 +5,14 @@ module alu(
 
     output reg [31:0]res
 );
-
-always @(*) begin
-/*
-* Problem 1:
-* Write operations execution logic here.
-*/
-end
-
+   /*
+    * Problem 1:
+    * Write operations execution logic here.
+    */
+   always @(*) begin
+      case (res)
+        3'b000: res <= src_a;
+        3'b001: res <= src_a + src_b;
+      endcase; 
+   end
 endmodule

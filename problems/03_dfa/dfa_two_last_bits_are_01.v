@@ -15,6 +15,9 @@ module dfa_two_last_bits_are_01(input clk, input reset, input input_sequence, ou
            else                next_state <= S1;
        S2: if (input_sequence) next_state <= S0;
            else                next_state <= S1;
+
+       // Just to prevent latch generation
+       default:                next_state <= S0;
      endcase
 
    assign condition_met = state == S2;

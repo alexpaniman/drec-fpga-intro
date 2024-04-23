@@ -4,13 +4,7 @@ module testbench();
    reg clk = 1'b0; always #1 clk = ~clk;
 
    reg input_sequence = 0, reset = 1;
-   wire condition_met;
-
-   dfa_two_last_bits_are_01 dfa(
-    .clk(clk), .reset(reset),
-    .input_sequence(input_sequence),
-    .condition_met(condition_met)
-   );
+   dfa_two_last_bits_are_01 dfa(.clk(clk), .reset(reset), .input_sequence(input_sequence));
 
    initial begin
       $dumpvars;
@@ -25,6 +19,6 @@ module testbench();
       #2 input_sequence = 0;
       #2 input_sequence = 0;
       #2 input_sequence = 1;
-      #64 $finish;
+      #4 $finish;
    end
 endmodule
