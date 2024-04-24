@@ -6,7 +6,7 @@ module alu(
     output reg [31:0]res
 );
    /*
-    * Problem 1:
+    * Problem 1 (solved -- untested):
     * Write operations execution logic here.
     */
    always @(*) begin

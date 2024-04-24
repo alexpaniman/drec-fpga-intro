@@ -2,7 +2,7 @@ PSET := pset07
 
 test: $(PSET)
 	./$(PSET) | tee cpu.log
-	grep "CPUv1" cpu.log | diff cpu_test.log -
+	meld cpu_test.log <(grep "CPUv1" cpu.log)
 
 $(PSET): testbench.v cpu_top.v core.v alu.v reg_file.v control.v rom.v
 	iverilog $^ -o $@

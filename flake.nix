@@ -19,6 +19,8 @@
         buildInputs = [
           pkgs.verilog
           pkgs.gtkwave
+          pkgs.riffdiff
+          pkgs.meld
         ];
       };
     };
