@@ -7,111 +7,184 @@
 :vpi_module "/nix/store/62zhrhrgcjya56fa1wh9ziih01vv9fd0-iverilog-12.0/lib/ivl/vhdl_textio.vpi";
 :vpi_module "/nix/store/62zhrhrgcjya56fa1wh9ziih01vv9fd0-iverilog-12.0/lib/ivl/v2005_math.vpi";
 :vpi_module "/nix/store/62zhrhrgcjya56fa1wh9ziih01vv9fd0-iverilog-12.0/lib/ivl/va_math.vpi";
-S_0x102c640 .scope module, "summator" "summator" 2 1;
+S_0x2177640 .scope module, "testbench" "testbench" 2 3;
  .timescale -9 -10;
-    .port_info 0 /INPUT 8 "a";
-    .port_info 1 /INPUT 8 "b";
-    .port_info 2 /OUTPUT 8 "c";
-o0x7fbe93eb8018 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
-v0x1054170_0 .net "a", 0 7, o0x7fbe93eb8018;  0 drivers
-o0x7fbe93eb8048 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
-v0x1067810_0 .net "b", 0 7, o0x7fbe93eb8048;  0 drivers
-v0x10678f0_0 .net "c", 0 7, L_0x1068990;  1 drivers
-L_0x1068990 .arith/sum 8, o0x7fbe93eb8018, o0x7fbe93eb8048;
-S_0x10174b0 .scope module, "testbench" "testbench" 3 3;
- .timescale -9 -10;
-v0x1068620_0 .var "clk", 0 0;
-S_0x1067a60 .scope module, "clk_div" "clock_divider" 3 9, 4 1 0, S_0x10174b0;
+v0x21b5b10_0 .var "clk", 0 0;
+v0x21b5bb0_0 .var "reset", 0 0;
+S_0x2163ef0 .scope module, "clk_div" "clock_divider" 2 10, 3 1 0, S_0x2177640;
  .timescale -9 -10;
     .port_info 0 /INPUT 1 "clk";
     .port_info 1 /INPUT 1 "reset";
     .port_info 2 /OUTPUT 1 "target_clk";
-P_0x1067c40 .param/l "NATIVE_CLK_FREQUENCY" 0 4 2, +C4<00000000000000011000011010100000>;
-P_0x1067c80 .param/l "REDUCTION_RATE" 1 4 10, +C4<00000000000000000000000000001010>;
-P_0x1067cc0 .param/l "TARGET_CLK_FREQUENCY" 0 4 3, +C4<00000000000000000010011100010000>;
-v0x1067f60_0 .net *"_ivl_0", 31 0, L_0x1068b30;  1 drivers
-L_0x7fbe93e6f018 .functor BUFT 1, C4<000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
-v0x1068060_0 .net *"_ivl_3", 26 0, L_0x7fbe93e6f018;  1 drivers
-L_0x7fbe93e6f060 .functor BUFT 1, C4<00000000000000000000000000001010>, C4<0>, C4<0>, C4<0>;
-v0x1068140_0 .net/2u *"_ivl_4", 31 0, L_0x7fbe93e6f060;  1 drivers
-v0x1068230_0 .net "clk", 0 0, v0x1068620_0;  1 drivers
-v0x10682f0_0 .var "counter", 4 0;
-o0x7fbe93eb8228 .functor BUFZ 1, C4<z>; HiZ drive
-v0x1068420_0 .net "reset", 0 0, o0x7fbe93eb8228;  0 drivers
-v0x10684e0_0 .net "target_clk", 0 0, L_0x1078cf0;  1 drivers
-E_0x1052d40 .event negedge, v0x1068230_0;
-E_0x1051b70/0 .event negedge, v0x1068420_0;
-E_0x1051b70/1 .event posedge, v0x1068230_0;
-E_0x1051b70 .event/or E_0x1051b70/0, E_0x1051b70/1;
-L_0x1068b30 .concat [ 5 27 0 0], v0x10682f0_0, L_0x7fbe93e6f018;
-L_0x1078cf0 .cmp/eq 32, L_0x1068b30, L_0x7fbe93e6f060;
-S_0x1018ef0 .scope module, "uart_transmitter" "uart_transmitter" 5 1;
+P_0x2175d20 .param/l "NATIVE_CLK_FREQUENCY" 0 3 2, +C4<00000000000000000000000000001111>;
+P_0x2175d60 .param/l "REDUCTION_RATE" 1 3 5, +C4<00000000000000000000000000000011>;
+P_0x2175da0 .param/l "TARGET_CLK_FREQUENCY" 0 3 3, +C4<00000000000000000000000000000101>;
+v0x2175fc0_0 .net *"_ivl_0", 31 0, L_0x21b6ab0;  1 drivers
+L_0x7f3833abb018 .functor BUFT 1, C4<00000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v0x21b5550_0 .net *"_ivl_3", 28 0, L_0x7f3833abb018;  1 drivers
+L_0x7f3833abb060 .functor BUFT 1, C4<00000000000000000000000000000011>, C4<0>, C4<0>, C4<0>;
+v0x21b5630_0 .net/2u *"_ivl_4", 31 0, L_0x7f3833abb060;  1 drivers
+v0x21b5720_0 .net "clk", 0 0, v0x21b5b10_0;  1 drivers
+v0x21b57e0_0 .var "counter", 2 0;
+v0x21b5910_0 .net "reset", 0 0, v0x21b5bb0_0;  1 drivers
+v0x21b59d0_0 .net "target_clk", 0 0, L_0x21c6c70;  1 drivers
+E_0x219e940 .event negedge, v0x21b5720_0;
+E_0x219dfc0 .event posedge, v0x21b5910_0, v0x21b5720_0;
+L_0x21b6ab0 .concat [ 3 29 0 0], v0x21b57e0_0, L_0x7f3833abb018;
+L_0x21c6c70 .cmp/eq 32, L_0x21b6ab0, L_0x7f3833abb060;
+S_0x21624b0 .scope module, "uart_transmitter" "uart_transmitter" 4 1;
  .timescale -9 -10;
     .port_info 0 /INPUT 1 "clk";
     .port_info 1 /INPUT 1 "data";
     .port_info 2 /OUTPUT 1 "tx";
-P_0x1042910 .param/l "BAUDRATE" 0 5 4, +C4<00000000000000000010010110000000>;
-P_0x1042950 .param/l "ENABLE_BIG_ENDIAN" 0 5 8, +C4<00000000000000000000000000000001>;
-P_0x1042990 .param/l "FRAME_DATA_LENGTH" 0 5 5, +C4<00000000000000000000000000001000>;
-P_0x10429d0 .param/l "NATIVE_CLK_FREQUENCY" 0 5 3, +C4<00000000000011110100001001000000>;
-o0x7fbe93eb8318 .functor BUFZ 1, C4<z>; HiZ drive
-v0x10686c0_0 .net "clk", 0 0, o0x7fbe93eb8318;  0 drivers
-o0x7fbe93eb8348 .functor BUFZ 1, C4<z>; HiZ drive
-v0x1068780_0 .net "data", 0 0, o0x7fbe93eb8348;  0 drivers
-o0x7fbe93eb8378 .functor BUFZ 1, C4<z>; HiZ drive
-v0x1068840_0 .net "tx", 0 0, o0x7fbe93eb8378;  0 drivers
-    .scope S_0x1067a60;
+P_0x218de10 .param/l "BAUDRATE" 0 4 4, +C4<00000000000000000010010110000000>;
+P_0x218de50 .param/l "ENABLE_BIG_ENDIAN" 0 4 8, +C4<00000000000000000000000000000001>;
+P_0x218de90 .param/l "FRAME_DATA_LENGTH" 0 4 5, +C4<00000000000000000000000000001000>;
+P_0x218ded0 .param/l "NATIVE_CLK_FREQUENCY" 0 4 3, +C4<00111011100110101100101000000000>;
+o0x7f3833b04288 .functor BUFZ 1, C4<z>; HiZ drive
+v0x21b6820_0 .net "clk", 0 0, o0x7f3833b04288;  0 drivers
+o0x7f3833b043d8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x21b68c0_0 .net "data", 0 0, o0x7f3833b043d8;  0 drivers
+o0x7f3833b04408 .functor BUFZ 1, C4<z>; HiZ drive
+v0x21b6960_0 .net "tx", 0 0, o0x7f3833b04408;  0 drivers
+S_0x21b5c80 .scope module, "clk_div" "clock_divider" 4 14, 3 1 0, S_0x21624b0;
+ .timescale -9 -10;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "reset";
+    .port_info 2 /OUTPUT 1 "target_clk";
+P_0x21b5e60 .param/l "NATIVE_CLK_FREQUENCY" 0 3 2, +C4<00111011100110101100101000000000>;
+P_0x21b5ea0 .param/l "REDUCTION_RATE" 1 3 5, +C4<00000000000000011001011011100110>;
+P_0x21b5ee0 .param/l "TARGET_CLK_FREQUENCY" 0 3 3, +C4<00000000000000000010010110000000>;
+v0x21b6160_0 .net *"_ivl_0", 31 0, L_0x21c6de0;  1 drivers
+L_0x7f3833abb0a8 .functor BUFT 1, C4<00000000000000>, C4<0>, C4<0>, C4<0>;
+v0x21b6260_0 .net *"_ivl_3", 13 0, L_0x7f3833abb0a8;  1 drivers
+L_0x7f3833abb0f0 .functor BUFT 1, C4<00000000000000011001011011100110>, C4<0>, C4<0>, C4<0>;
+v0x21b6340_0 .net/2u *"_ivl_4", 31 0, L_0x7f3833abb0f0;  1 drivers
+v0x21b6430_0 .net "clk", 0 0, o0x7f3833b04288;  alias, 0 drivers
+v0x21b64f0_0 .var "counter", 17 0;
+o0x7f3833b042e8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x21b6620_0 .net "reset", 0 0, o0x7f3833b042e8;  0 drivers
+v0x21b66e0_0 .net "target_clk", 0 0, L_0x21c6f30;  1 drivers
+E_0x219e210 .event negedge, v0x21b6430_0;
+E_0x2187cb0 .event posedge, v0x21b6620_0, v0x21b6430_0;
+L_0x21c6de0 .concat [ 18 14 0 0], v0x21b64f0_0, L_0x7f3833abb0a8;
+L_0x21c6f30 .cmp/eq 32, L_0x21c6de0, L_0x7f3833abb0f0;
+    .scope S_0x2163ef0;
 T_0 ;
-    %pushi/vec4 0, 0, 5;
-    %store/vec4 v0x10682f0_0, 0, 5;
+    %pushi/vec4 0, 0, 3;
+    %store/vec4 v0x21b57e0_0, 0, 3;
     %end;
     .thread T_0;
-    .scope S_0x1067a60;
+    .scope S_0x2163ef0;
 T_1 ;
-    %wait E_0x1051b70;
-    %load/vec4 v0x10682f0_0;
-    %addi 1, 0, 5;
-    %assign/vec4 v0x10682f0_0, 0;
+    %wait E_0x219dfc0;
+    %load/vec4 v0x21b5910_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_1.0, 8;
+    %pushi/vec4 0, 0, 3;
+    %jmp/1 T_1.1, 8;
+T_1.0 ; End of true expr.
+    %load/vec4 v0x21b57e0_0;
+    %addi 1, 0, 3;
+    %jmp/0 T_1.1, 8;
+ ; End of false expr.
+    %blend;
+T_1.1;
+    %assign/vec4 v0x21b57e0_0, 0;
     %jmp T_1;
     .thread T_1;
-    .scope S_0x1067a60;
+    .scope S_0x2163ef0;
 T_2 ;
-    %wait E_0x1052d40;
-    %load/vec4 v0x10684e0_0;
+    %wait E_0x219e940;
+    %load/vec4 v0x21b59d0_0;
     %flag_set/vec4 8;
     %jmp/0xz  T_2.0, 8;
-    %pushi/vec4 0, 0, 5;
-    %assign/vec4 v0x10682f0_0, 0;
+    %pushi/vec4 0, 0, 3;
+    %assign/vec4 v0x21b57e0_0, 0;
 T_2.0 ;
     %jmp T_2;
     .thread T_2;
-    .scope S_0x10174b0;
+    .scope S_0x2177640;
 T_3 ;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v0x1068620_0, 0, 1;
+    %store/vec4 v0x21b5b10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
     %end;
     .thread T_3;
-    .scope S_0x10174b0;
+    .scope S_0x2177640;
 T_4 ;
     %delay 10, 0;
-    %load/vec4 v0x1068620_0;
+    %load/vec4 v0x21b5b10_0;
     %inv;
-    %store/vec4 v0x1068620_0, 0, 1;
+    %store/vec4 v0x21b5b10_0, 0, 1;
     %jmp T_4;
     .thread T_4;
-    .scope S_0x10174b0;
+    .scope S_0x2177640;
 T_5 ;
-    %vpi_call 3 12 "$dumpvars" {0 0 0};
-    %vpi_call 3 13 "$display", "Test started..." {0 0 0};
-    %delay 10000, 0;
-    %vpi_call 3 14 "$finish" {0 0 0};
+    %vpi_call 2 13 "$dumpvars" {0 0 0};
+    %vpi_call 2 14 "$display", "Test started..." {0 0 0};
+    %delay 70, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
+    %delay 150, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
+    %delay 310, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x21b5bb0_0, 0, 1;
+    %delay 1280, 0;
+    %vpi_call 2 21 "$finish" {0 0 0};
     %end;
     .thread T_5;
+    .scope S_0x21b5c80;
+T_6 ;
+    %pushi/vec4 0, 0, 18;
+    %store/vec4 v0x21b64f0_0, 0, 18;
+    %end;
+    .thread T_6;
+    .scope S_0x21b5c80;
+T_7 ;
+    %wait E_0x2187cb0;
+    %load/vec4 v0x21b6620_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_7.0, 8;
+    %pushi/vec4 0, 0, 18;
+    %jmp/1 T_7.1, 8;
+T_7.0 ; End of true expr.
+    %load/vec4 v0x21b64f0_0;
+    %addi 1, 0, 18;
+    %jmp/0 T_7.1, 8;
+ ; End of false expr.
+    %blend;
+T_7.1;
+    %assign/vec4 v0x21b64f0_0, 0;
+    %jmp T_7;
+    .thread T_7;
+    .scope S_0x21b5c80;
+T_8 ;
+    %wait E_0x219e210;
+    %load/vec4 v0x21b66e0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_8.0, 8;
+    %pushi/vec4 0, 0, 18;
+    %assign/vec4 v0x21b64f0_0, 0;
+T_8.0 ;
+    %jmp T_8;
+    .thread T_8;
 # The file index is used to find the file name in the following table.
-:file_names 6;
+:file_names 5;
     "N/A";
     "<interactive>";
-    "sum.v";
     "testbench.v";
     "clock-divider.v";
     "uart-transmitter.v";
