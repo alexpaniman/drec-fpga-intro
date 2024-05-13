@@ -12,12 +12,12 @@ module testbench();
     initial begin
         $dumpvars;
         $display("Test started...");
-        data =  15; sending = 1; #2 sending = 0; #4
-        data = 121; sending = 1; #2 sending = 0; #4
-        data = 170; sending = 1; #2 sending = 0; #4
-        data = 255; sending = 1; #2 sending = 0; #4
-        data =  79; sending = 1; #2 sending = 0; #4
-        data =  32; sending = 1; #2 sending = 0; #4
+        data =  15; sending = 1; #2 sending = 0; #256
+        data = 121; sending = 1; #2 sending = 0; #256
+        data = 170; sending = 1; #2 sending = 0; #256
+        data = 255; sending = 1; #2 sending = 0; #256
+        data =  79; sending = 1; #2 sending = 0; #256
+        data =  32; sending = 1; #2 sending = 0; #256
         #4096 $finish;
     end
 
