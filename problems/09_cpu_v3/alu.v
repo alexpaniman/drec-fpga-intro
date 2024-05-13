@@ -12,6 +12,7 @@ always @(*) begin
         3'b100: res = src_a ^ src_b;
         3'b110: res = src_a | src_b;
         3'b111: res = src_a & src_b;
+        3'b010: res = !(src_a ^ src_b);
         default: res = 0;
     endcase
 end

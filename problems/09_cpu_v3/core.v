@@ -10,7 +10,7 @@ module core(
 );
 
 reg [31:0]pc = 32'hFFFFFFFF;
-wire [31:0]pc_target = branch_taken ? branch_target : pc + 1;
+wire [31:0]pc_target = branch_taken ? branch_target : (pc + 1);
 wire [31:0]pc_next = (pc == last_pc) ? pc : pc_target;
 
 always @(posedge clk) begin
@@ -61,9 +61,9 @@ reg_file rf(
 wire [11:0]imm12;
 wire [31:0]imm32 = {{20{imm12[11]}}, imm12};
 
-wire cmp_res = /* Problem 2: comparison result */
-wire branch_taken = /* Problem 2: is branch taken or not ? */
-wire [31:0]branch_target = /* Problem 2: target address bus */
+wire cmp_res = alu_result != 0;
+wire branch_taken = branch & cmp_res;
+wire [31:0]branch_target = pc + imm32;
 wire branch;
 
 control control(
