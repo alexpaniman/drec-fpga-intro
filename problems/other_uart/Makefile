@@ -1,7 +1,7 @@
 test: pset02
 	./pset02
 
-pset02: testbench.v clock-divider.v uart-transmitter.v
+pset02: testbench.v clock-divider.v uart-transmitter.v uart-receiver.v
 	iverilog $^ -o $@
 
 clean:
