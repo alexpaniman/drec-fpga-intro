@@ -3,7 +3,7 @@ module uart_transmitter
   parameter NATIVE_CLK_FREQUENCY = 1000000000,
   parameter BAUDRATE = 9600,
   parameter FRAME_DATA_LENGTH = 8,
-  parameter BIG_ENDIAN = 1
+  parameter BIG_ENDIAN = 0
 ) (input clk, input sending, input [0:FRAME_DATA_LENGTH - 1]data, output busy, output reg tx = 1);
 
     reg reset = 0;
@@ -23,7 +23,11 @@ module uart_transmitter
     reg [0:MAX_TRANSMITTED_BIT - 1]saved_data = { 1'b0, {FRAME_DATA_LENGTH{1'b0}}, 2'b11 };
     always @(posedge clk) begin
         if (got_new_data) begin
-            saved_data[1:FRAME_DATA_LENGTH] <= data;
+            if (!BIG_ENDIAN)
+                for (integer i = 0; i < FRAME_DATA_LENGTH; i ++)
+                    saved_data[i + 1] <= data[FRAME_DATA_LENGTH - 1 - i];
+            else
+                saved_data[1:FRAME_DATA_LENGTH] <= data;
             transmitted_bit <= 1;
 
             tx <= 1; // Send transmission start signal
