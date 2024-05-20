@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -o xtrace
+
+riscv64-linux-gnu-gcc -nostdlib -fomit-frame-pointer -O1 -mabi=ilp32 -march=rv32i -c fib_riscv.c -o fib_riscv.o
+riscv64-linux-gnu-as -march=rv32i -mabi=ilp32 -c loader.s -o loader.o
+riscv64-linux-gnu-ld -Ttext=0x1000 -melf32lriscv loader.o fib_riscv.o -o fib_riscv.out
+riscv64-linux-gnu-objdump -d fib_riscv.out
+riscv64-linux-gnu-objcopy -O binary fib_riscv.out fib_riscv.bin
+hexdump -v -e '"%08x\n"' fib_riscv.bin > fib.txt
+rm fib_riscv.out fib_riscv.bin fib_riscv.o loader.o

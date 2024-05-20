@@ -9,8 +9,8 @@ $(PSET): testbench.v cpu_top.v core.v alu.v reg_file.v control.v rom.v mem_ctrl.
 clean:
 	rm -f $(PSET)
 
-samples:
-	$(MAKE) -C samples/
+# samples:
+# 	$(MAKE) -C samples/
 
 help:
 	@echo "  test  - Run testbench"

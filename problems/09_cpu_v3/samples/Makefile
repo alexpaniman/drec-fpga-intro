@@ -16,8 +16,8 @@ all: $(TXTS)
 %.bin: %.out
 	$(OBJCOPY) -O binary $^ $@
 
-%.out: %.o
-	$(LD) -melf32lriscv $^ -o $@ && $(OBJDUMP) -d $@
+%.out: loader.o fib_riscv.o
+	$(LD) -Ttext=0x1000 -melf32lriscv $^ -o $@ && $(OBJDUMP) -d $@
 
 %.o: %.s
 	$(AS) -march=rv32i -mabi=ilp32 -c $^ -o $@
